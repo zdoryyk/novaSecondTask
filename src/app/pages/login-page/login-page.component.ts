@@ -74,6 +74,7 @@ export class LoginPageComponent  {
       return this.loginService.getCountry(country).pipe(
         map(response => {
           const countryFlag = response['0']['flags']['png'];
+          console.log(countryFlag);
           const countryCurrency = this.getCurrencyName(response);
           localStorage.setItem('flag',countryFlag);
           localStorage.setItem('currency',countryCurrency);

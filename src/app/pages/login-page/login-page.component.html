@@ -68,7 +68,7 @@
                     </p-checkbox>
                     <label for="agreeTerms">I agree to the terms and conditions</label>
                 </div>
-                <button [disabled]="form.invalid" type="button" class="btn" (click)="onLogin()">Login</button>
+                <button [disabled]="form.invalid || form.pending" type="button" class="btn" (click)="onLogin()">Login</button>
             </form>
         </div>
         

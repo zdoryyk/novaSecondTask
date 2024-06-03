@@ -1,0 +1,76 @@
+
+<div class="parent">
+    <div class="container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form (ngSubmit)="onLogin()" [formGroup]="form">
+                <div class="input-box">
+                    <input name="fullName" formControlName="fullName" style="text-transform:uppercase" required>
+                    <label>Meno a Priezvisko</label>
+                    @if(form.get('fullName')?.['touched'] && form.get('fullName')?.['invalid']){
+                        <div class="validation">
+                            @if(form.get('fullName')?.['errors']?.['required']){
+                                <small style="color: red; font-size: 15px; padding-top: 15px;">write your full name</small>
+                            }
+                            @if(form.get('fullName')?.['errors']?.['pattern']){
+                                <small style="color: red; font-size: 15px; padding-top: 15px;">write your full name</small>
+                            }
+                        </div>
+                    }
+                </div>
+
+                <div class="input-box">
+                    <input formControlName="email" type="text"  name="email" required>
+                    <label>Email</label>
+                    @if(form.get('email')?.['touched'] && form.get('email')?.['invalid']){
+                        <div class="validation">
+                            @if(form.get('email')?.['errors']){
+                                <small style="color: red; font-size: 15px; padding-top: 5px;">write your email</small>
+                            }
+                        </div>
+                    }
+                </div>
+                <p-floatLabel>
+                    <p-calendar 
+                        formControlName="birthDate"
+                        inputId="birth_date" />
+                    <label for="birth_date">Birth Date</label>
+                </p-floatLabel>
+                @if(form.get('birthDate')?.['touched'] && form.get('birthDate')?.['invalid']){
+                    <div class="validation">
+                            <small style="color: red; font-size: 15px;">You minimal age should be more then 18</small>
+                    </div>
+                }
+                <div class="input-box">
+                    <input formControlName="country" type="text" name="country" required>
+                    <label>Country</label>
+                    @if(form.get('country')?.touched && form.get('country')?.invalid){
+                        <div class="validation">
+                            @if(form.get('country')?.errors?.required){
+                                <div>
+                                    <small style="color: red; font-size: 15px;">Country is required</small>
+                                  </div>
+                            }
+                        </div>
+                        @if(form.get('country')?.errors?.invalidCountry){
+                            <div>
+                                <small style="color: red; font-size: 15px;">Invalid country</small>
+                              </div>
+                        }
+                    }
+                  </div>
+                <div class="check-btn">
+                    <p-checkbox 
+                        formControlName="isButtonPressed"
+                        [binary]="true" 
+                        inputId="agreeTerms"
+                        variant="filled">
+                    </p-checkbox>
+                    <label for="agreeTerms">I agree to the terms and conditions</label>
+                </div>
+                <button [disabled]="form.invalid" type="button" class="btn" (click)="onLogin()">Login</button>
+            </form>
+        </div>
+        
+    </div>
+</div>

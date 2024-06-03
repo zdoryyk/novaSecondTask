@@ -1,0 +1,26 @@
+<div class="parent">
+    <div class="container">
+      <div class="data">
+        <div class="info-item">
+          <b>Meno a priezvisko:</b> <span>{{fullName | titlecase}}</span>
+        </div>
+        <div class="info-item">
+          <b>Email:</b> <span class="wrap">{{email}}</span>
+        </div>
+        <div class="info-item">
+          <b>Datum narodenia:</b> <span>{{birthDay |  date : "dd-MM-YYYY"}}</span>
+        </div>
+        <div class="info-item">
+          <b>Krajina:</b> 
+          <span class="wrap">
+            <img [src]="flag" class="flag">
+            {{country | titlecase}}
+          </span>
+        </div>
+        <div class="info-item">
+            <b>Mena:</b> <span class="wrap">{{currency}}</span>
+          </div>
+      </div>
+    </div>
+  </div>
+  

@@ -23,6 +23,10 @@ export class SummaryPageComponent  implements OnInit{
   }
 
   ngOnInit(): void {
+    this.parseDataFromLocalStorage();
+  }
+
+  parseDataFromLocalStorage(){
     this.email = localStorage.getItem('email') || '';
     if(this.email === ''){
       localStorage.clear();
@@ -35,7 +39,6 @@ export class SummaryPageComponent  implements OnInit{
     let birthDate = localStorage.getItem('birthDate') || '';
     let birthNumber = Date.parse(birthDate);
     this.birthDay = new Date(birthNumber);
-    
   }
 
 }

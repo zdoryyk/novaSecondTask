@@ -25,6 +25,7 @@ export class SummaryPageComponent  implements OnInit{
   ngOnInit(): void {
     this.email = localStorage.getItem('email') || '';
     if(this.email === ''){
+      localStorage.clear();
       this.router.navigate(['/login']);
     }
     this.fullName = localStorage.getItem('fullName') || '';
